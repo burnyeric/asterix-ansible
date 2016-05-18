@@ -1,0 +1,29 @@
+version: "2" 
+services:
+  red:
+    image: ceejatec/asterix-centos7
+    networks:
+      - asterix
+
+  blue:
+    image: ceejatec/asterix-centos7
+    networks:
+      - asterix
+
+  green:
+    image: ceejatec/asterix-centos7
+    networks:
+      - asterix
+
+  cc:
+    image: ceejatec/asterix-centos7
+    ports:
+      - "12345:12345"
+    volumes:
+      - "/home/ceej/as/work/demo/cluster:/home/couchbase/cluster"
+    networks:
+      - asterix
+
+networks:
+  asterix:
+

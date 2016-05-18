@@ -1,0 +1,11 @@
+[ncs]
+red
+green
+blue
+
+[cc]
+cc
+
+[all:vars]
+ansible_user=couchbase
+

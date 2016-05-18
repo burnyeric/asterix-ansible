@@ -1,0 +1,24 @@
+---
+- hosts: all
+
+  tasks:
+    - name: Create Hyracks installation directory
+      file:
+        path: /home/couchbase/hyracks
+        state: directory
+
+    - name: Download and unpack Hyracks
+      unarchive:
+        src: hyracks.tar.gz
+        dest: /home/couchbase/hyracks
+        owner: couchbase
+        group: couchbase
+        creates: /home/couchbase/hyracks/bin/hyracksncservice
+
+- hosts: ncs
+
+  tasks:
+    - name: Start NC Service
+      shell: >
+        nohup /home/couchbase/hyracks/bin/hyracksncservice &
+
