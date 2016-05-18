@@ -2,23 +2,23 @@
 - hosts: all
 
   tasks:
-    - name: Create Hyracks installation directory
+    - name: Create Asterix installation directory
       file:
-        path: /home/couchbase/hyracks
+        path: /home/couchbase/asterix
         state: directory
 
-    - name: Download and unpack Hyracks
+    - name: Download and unpack Asterix
       unarchive:
-        src: hyracks.tar.gz
-        dest: /home/couchbase/hyracks
+        src: asterix-server-0.8.9-SNAPSHOT-binary-assembly.zip
+        dest: /home/couchbase/asterix
         owner: couchbase
         group: couchbase
-        creates: /home/couchbase/hyracks/bin/hyracksncservice
+        creates: /home/couchbase/asterix/bin/asterixncservice
 
 - hosts: ncs
 
   tasks:
     - name: Start NC Service
       shell: >
-        nohup /home/couchbase/hyracks/bin/hyracksncservice &
+        nohup /home/couchbase/asterix/bin/asterixncservice &
 
