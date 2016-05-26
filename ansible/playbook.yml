@@ -22,3 +22,15 @@
       shell: >
         nohup /home/couchbase/asterix/bin/asterixncservice < /dev/null > /home/couchbase/ncservice.log 2>&1 &
 
+- hosts: cc
+
+  tasks:
+    - name: Copy cluster config to CC
+      copy:
+        src: asterix.conf
+        dest: /home/couchbase
+        
+    - name: Start CC
+      shell: >
+        nohup /home/couchbase/asterix/bin/asterixcc -config-file /home/couchbase/asterix.conf < /dev/null > /home/couchbase/cc.log 2>&1 &
+

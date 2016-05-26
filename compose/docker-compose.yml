@@ -1,31 +1,34 @@
 version: "2" 
 services:
   red:
+    container_name: red
     image: ceejatec/asterix-centos7
     networks:
       - asterix
 
   blue:
+    container_name: blue
     image: ceejatec/asterix-centos7
     networks:
       - asterix
 
   green:
+    container_name: green
     image: ceejatec/asterix-centos7
     networks:
       - asterix
 
   cc:
+    container_name: cc
     image: ceejatec/asterix-centos7
     ports:
       - "16001:16001"
       - "19001:19001"
-    volumes:
-      - "../cluster:/home/couchbase/cluster"
     networks:
       - asterix
 
   ansible:
+    container_name: ansible
     image: ceejatec/asterix-ansible
     volumes:
       - "../ansible:/home/couchbase/ansible"
