@@ -20,5 +20,5 @@
   tasks:
     - name: Start NC Service
       shell: >
-        nohup /home/couchbase/asterix/bin/asterixncservice &
+        nohup /home/couchbase/asterix/bin/asterixncservice < /dev/null > /home/couchbase/ncservice.log 2>&1 &
 
